@@ -1,0 +1,17 @@
+
+
+cm => meter
+
+meter => km
+
+gm => kg
+
+fh => degree_celc=sius
+
+degree_celsius => fh
+
+
+
+logical operator (multiple conditions evaluate)
+
+membership operator (in) used for cheking value exist in a sequence
