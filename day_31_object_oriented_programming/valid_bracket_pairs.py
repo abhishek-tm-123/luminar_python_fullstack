@@ -1,18 +1,12 @@
-string = input("enter string :")
-brackets = {"{":"}","(":")","[":"]"}
-stack=[]
-is_valid = True
-for ch in string:
-    if ch in brackets.keys():
-        stack.append(ch)
-    elif ch in brackets.values():
-        if brackets[stack.pop()] == ch:
-            pass
-        else:
-            is_valid = False
-            break
 
-if is_valid:
-    print("valid")
-else:
-    print("not valid")
+def isValid( s: str) -> bool:
+    brackets = {"(": ")", "[": "]", "{": "}"}
+    stack = []
+    for ch in s:
+        if ch in brackets:
+            stack.append(ch)
+        elif not stack or brackets[stack.pop()] != ch:
+            return False
+    return not stack
+
+print(isValid(input("enter string:")))
