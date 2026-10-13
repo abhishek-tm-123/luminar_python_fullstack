@@ -17,11 +17,13 @@ def maxSubArray(nums:list[int])->int:
     return max_sum
 
 def maxSubArray2(nums:list[int])->int:
-    nums.sort()
+    
     max_sum = 0
     curr_sum=0
     for num in nums:
         curr_sum = num + curr_sum
+        if num > curr_sum:
+            curr_sum=num
         if curr_sum>max_sum:
             max_sum=curr_sum
     return max_sum
