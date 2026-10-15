@@ -14,11 +14,14 @@ class MobileListCreateRetrieveUpdateDelete:
         
         self.cursor = self.connection.cursor()
         
-    def post(self,name=None,brand=None,specs=None,price=None,rating=None):
-        query = """
-        insert into mobile(name,brand,specs,price,rating) values (%s,%s,%s,%s,%s)
+    def post(self,**kwargs):
+        keys=[k for k in kwargs.keys()]
+        place_holder = ",".join(keys)
+        
+        query = f"""
+        insert into mobile({place_holder}) values (%s,%s,%s,%s,%s)
         """
-        values = [name,brand,specs,price,rating]
+        values = [v for v in kwargs.values()]
         
         self.cursor.execute(query,values)
         
@@ -43,9 +46,14 @@ class MobileListCreateRetrieveUpdateDelete:
         record = self.cursor.fetchone()
         print(record)
         
-    def put(self,id=None,price=None,rating=None):
-        query = "update mobile set price=%s,rating=%s where id = %s"
-        values=[price,rating,id]
+    def put(self,id=None,**kwargs):
+        place_holder=""
+        for k in kwargs.keys():
+            place_holder+=k+"=%s,"
+        place_holder=place_holder.rstrip(",")
+        query = f"update mobile set {place_holder} where id = %s"
+        values=[v for v in kwargs.values()]
+        values.append(id)
         self.cursor.execute(query,values)
         self.connection.commit()
         print("mobile updated ....")
@@ -59,15 +67,15 @@ class MobileListCreateRetrieveUpdateDelete:
         
 mobile_instance = MobileListCreateRetrieveUpdateDelete(user="root",password="Password@123")
 
-# mobile_instance.post(name="i phone 18 pro",brand="apple",specs="12gb-512gb",price=80000,rating=4.2)
+#mobile_instance.post(name="i phone 18 pro",brand="apple",specs="12gb-512gb",price=80000,rating=4.2)
         
 #mobile_instance.get()
 
-# mobile_instance.retrieve(id=2)
+mobile_instance.retrieve(id=3)
 
-# mobile_instance.put(id=2,price=90000,rating=4)
+mobile_instance.put(id=3,price=100000,rating=3.8,specs="16gb-1tb")
 
-# mobile_instance.retrieve(id=2)
+mobile_instance.retrieve(id=3)
 
 # mobile_instance.delete(id=2)
 

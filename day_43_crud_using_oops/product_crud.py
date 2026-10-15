@@ -11,11 +11,13 @@ class ProductListCreateRetrieveUpdateDelete:
         
         self.cursor = self.connection.cursor()
         
-    def post(self,title=None,category=None,price=None,rating=None):
-        query = """
-        insert into product(title,category,price,rating) values (%s,%s,%s,%s)
+    def post(self,**kwargs):
+        keys=[k for k in kwargs.keys()]
+        place_holder = ",".join(keys)
+        query = f"""
+        insert into product({place_holder}) values (%s,%s,%s,%s)
         """
-        values = [title,category,price,rating]
+        values = [v for v in kwargs.values()]
         
         self.cursor.execute(query,values)
         
@@ -40,11 +42,17 @@ class ProductListCreateRetrieveUpdateDelete:
         record = self.cursor.fetchone()
         print(record)
         
-    def put(self,id=None,price=None,rating=None):
-        query="""
-            update product set price=%s,rating=%s where id = %s
+    def put(self,id=None,**kwargs):
+        place_holder=""
+        for k in kwargs.keys():
+            place_holder+=k+"=%s,"
+        place_holder=place_holder.rstrip(",")
+        
+        query=f"""
+            update product set {place_holder} where id = %s
             """
-        values = [price,rating,id]
+        values = [v for v in kwargs.values()]
+        values.append(id)
         
         self.cursor.execute(query,values)
         
@@ -68,17 +76,17 @@ class ProductListCreateRetrieveUpdateDelete:
         
 product_instance = ProductListCreateRetrieveUpdateDelete(user="root",password="Password@123")
 
-# product_instance.post(title="sg sports shoe",category="shoes",price=1500,rating=4.5)
+#product_instance.post(title="sg sports shoe",category="shoes",price=1500,rating=4.5)
 
 # product_instance.get()
 
-# product_instance.retrieve(id=1)
-# product_instance.put(id=1,price=1700,rating=4.5)
-# product_instance.retrieve(1)
+product_instance.retrieve(id=3)
+product_instance.put(id=3,price=3700,rating=4.8)
+product_instance.retrieve(3)
 
-product_instance.delete(id=2)
+#product_instance.delete(id=2)
 
-product_instance.get()
+#product_instance.get()
 
 
 """
