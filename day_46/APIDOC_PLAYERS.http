@@ -1,0 +1,43 @@
+#api call for list all players
+###
+GET http://localhost:8000/players/
+Accept: application/json
+
+#api call for creating a player
+###
+POST http://localhost:8000/players/
+Content-Type: application/json
+
+{
+    "game":"cricket",
+    "country":"india",
+    "name":"virat kohli",
+    "age":39,
+    "gender":"male"
+}
+
+#api call for fetching one player
+###
+GET http://localhost:8000/players/2/
+Accept: application/json
+
+
+#api call for updating a player
+###
+PUT http://localhost:8000/players/2/
+Content-Type: application/json
+
+{
+    "game":"cricket",
+    "country":"india",
+    "name":"virat kohli",
+    "age":40,
+    "gender":"male"
+
+}
+
+#api call for deleting a player
+###
+DELETE http://localhost:8000/players/3/
+Accept: application/json
+

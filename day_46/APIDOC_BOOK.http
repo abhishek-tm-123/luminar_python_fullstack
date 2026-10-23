@@ -1,0 +1,37 @@
+#api call for list all books
+###
+GET http://localhost:8000/books/
+Accept: application/json
+
+#api call for creating post
+###
+POST http://localhost:8000/books/
+Content-Type: application/json
+
+{
+    "title":"randamoozham",
+    "auther":"mt",
+    "price":550,
+    "pages":600
+}
+
+#api call for fetching book details
+###
+GET http://localhost:8000/books/2/
+Accept: application/json
+
+#api call for updating a book
+PUT http://localhost:8000/books/2/
+Content-Type: application/json
+
+{
+    "title":"randamoozham",
+    "auther":"mt",
+    "price":550,
+    "pages":700
+}
+
+#api call for deleting a book
+###
+DELETE http://localhost:8000/books/2/
+Accept: application/json

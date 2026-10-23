@@ -1,0 +1,40 @@
+#api call for list all products
+###
+GET http://localhost:8000/products/
+Accept: application/json
+
+
+#api call for create new products
+###
+POST http://localhost:8000/products/
+Content-Type: application/json
+
+{
+    "title":"lp shirt",
+    "price":1500,
+    "category":"clothings",
+    "brand":"lp"
+
+}
+
+#api call for fetching one product 
+###
+GET http://localhost:8000/products/2/
+Accept: application/json
+
+#api call for updating a product
+###
+PUT http://localhost:8000/products/2/
+Content-Type: application/json
+
+{
+    "title":"lp shirt",
+    "price":2000,
+    "category":"clothings",
+    "brand":"lp"
+}
+
+#api call for deleting a product
+###
+DELETE http://localhost:8000/products/2/
+Accept: application/json

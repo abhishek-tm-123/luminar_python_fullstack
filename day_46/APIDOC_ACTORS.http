@@ -1,0 +1,39 @@
+#api call for list all actors
+### 
+GET http://localhost:8000/actors/
+Accept: application/json
+
+#api call for create actors
+###
+POST http://localhost:8000/actors/
+Content-Type: application/json
+
+{
+    "name":"mohanlal",
+    "language":"malayalam",
+    "age":64,
+    "gender":"male"
+}
+
+#api call for fetching one actor
+###
+GET http://localhost:8000/actors/2/
+Accept: application/json
+
+#api call for update on actor
+###
+PUT http://localhost:8000/actors/2/
+Content-Type: application/json
+
+{
+    "name":"mohanlal",
+    "language":"malayalam",
+    "age":64,
+    "gender":"male"
+}
+
+#api call for delete a actor
+###
+DELETE http://localhost:8000/actors/2/
+Accept: application/json
+

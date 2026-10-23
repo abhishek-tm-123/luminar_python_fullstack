@@ -1,0 +1,46 @@
+# this is a line comment
+# min three hash
+# http_method url
+# Accept|Content-Type:application/json
+# Authorization
+#
+# request_body => {JSON}
+
+# api call for list all posts
+###
+GET https://jsonplaceholder.typicode.com/posts/
+Accept: application/json
+
+
+# api call for creating post
+###
+POST https://jsonplaceholder.typicode.com/posts/
+Content-Type: application/json
+
+{
+    "userId":1,
+    "title":"greeting",
+    "body":"hello,world"
+}
+
+# api call for fetching post detail
+###
+GET https://jsonplaceholder.typicode.com/posts/2
+Accept: application/json
+
+# api call for updating post
+###
+PUT https://jsonplaceholder.typicode.com/posts/2
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "id": 2,
+    "title": "test sample",
+    "body": "test sample data"
+}
+
+# api call for deleting a post
+###
+DELETE https://jsonplaceholder.typicode.com/posts/100/
+Accept: application/json

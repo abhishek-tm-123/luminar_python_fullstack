@@ -1,5 +1,6 @@
 from mysql.connector import connect
 
+
 class ProductListCreateRetrieveUpdateDelete:
     def __init__(self,user=None,password=None):
         self.connection = connect(

@@ -1,0 +1,39 @@
+#api call for list songs
+###
+GET http://localhost:8000/songs/
+Accept: application/json
+
+#api call for create song
+###
+POST http://localhost:8000/songs/
+Content-Type: application/json
+
+{
+    "title":"beat it",
+    "singer":"MJ",
+    "track_num":1,
+    "duration":4.5
+}
+
+#api call for fetching song
+###
+GET http://localhost:8000/songs/2
+Accept: application/json
+
+#api call for updating song
+###
+PUT http://localhost:8000/songs/2
+Content-Type: application/json
+
+{
+    "title":"beat it",
+    "singer":"MJ",
+    "track_num":1,
+    "duration":5
+}
+
+#api call for deleting song
+###
+DELETE http://localhost:8000/songs/
+Content-Type: application/json
+Accept: application/json
